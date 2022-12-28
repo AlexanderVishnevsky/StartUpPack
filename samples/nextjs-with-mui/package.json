@@ -1,31 +1,65 @@
 {
   "name": "nextjs-with-typescript",
-  "version": "5.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "lint": "tsc --build --clean && eslint --ext .ts,.tsx ./ --quiet --fix",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
+    "pre-commit": "yarn run lint && yarn run build",
+    "serve": "next start",
+    "webpack-analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
-    "@mui/icons-material": "latest",
-    "@mui/material": "latest",
+    "@mui/material": "5.11.2",
     "@next/font": "latest",
+    "i18next": "latest",
     "next": "latest",
+    "next-i18next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-i18next": "latest"
   },
   "devDependencies": {
-    "@types/node": "latest",
+    "@next/bundle-analyzer": "latest",
+    "@next/eslint-plugin-next": "latest",
+    "@types/node": "18.11.18",
     "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-config-react-app": "latest",
+    "eslint-plugin-flowtype": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-unused-imports": "latest",
+    "prettier": "latest",
     "typescript": "latest"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
