@@ -57,6 +57,11 @@ module.exports = {
                     {
                         pattern: '@/**',
                         group: 'internal',
+                        position: 'before',
+                    },
+                    {
+                        pattern: '@/model/**',
+                        group: 'internal',
                     },
                 ],
                 pathGroupsExcludedImportTypes: [],
