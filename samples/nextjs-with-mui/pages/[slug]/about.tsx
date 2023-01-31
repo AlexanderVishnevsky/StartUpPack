@@ -4,9 +4,11 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from 'next';
 
-export default function Home() {
+import { makeStaticProps, getStaticPaths } from '@/server/getStaticLang';
+
+function About() {
     const { t } = useTranslation('common');
     return (
         <Container maxWidth="lg">
@@ -27,10 +29,8 @@ export default function Home() {
     );
 }
 
-export async function getStaticProps({ locale = 'en' }: { locale?: string }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['common'])),
-        },
-    };
-}
+const getStaticProps: GetStaticProps = makeStaticProps(['common']);
+
+export { getStaticPaths, getStaticProps };
+
+export default About;
