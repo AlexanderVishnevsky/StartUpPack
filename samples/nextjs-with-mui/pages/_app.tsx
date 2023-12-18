@@ -6,12 +6,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import theme from '@theme';
-import { appWithTranslation } from 'next-i18next';
 
 import { MyAppProps } from '@/model/typings/_appTypings';
 
 import createEmotionCache from '../src/config/createEmotionCache';
-import nextI18NextConfig from '../next-i18next.config.js';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -32,4 +30,4 @@ const MyApp = (props: MyAppProps) => {
     );
 };
 
-export default appWithTranslation(MyApp, nextI18NextConfig);
+export default MyApp;
